@@ -922,7 +922,7 @@ hljs.initHighlightingOnLoad();
   <div class="slides">
 
 <section data-state="section" data-transition="linear" data-transition-speed="default">
-<h1>R入門いろはにほへと: インストールから簡単な操作まで</h1><p>瓜生真也（横浜国立大学大学院環境情報学府）<br/>2014-06-08</p>
+<h1>R入門いろはにほへと: インストールから簡単な操作まで</h1><p>瓜生真也（横浜国立大学大学院環境情報学府）<br/>June 30, 2014</p>
 
 <div class="slideContent" >
 
@@ -935,7 +935,8 @@ hljs.initHighlightingOnLoad();
 <ol>
 <li>Rの概要</li>
 <li>Rのインストール</li>
-<li>RStudio</li>
+<li>簡単な操作</li>
+<li>RStudioのインストール</li>
 </ol>
 
 </div>
@@ -974,20 +975,149 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>Rスクリプトの書き方</h3>
 <div class="slideContent" >
-<p><a href="http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml">Google&#39;s R Style Guide</a>
--&gt; <a href="http://www13.atpages.jp/t6s5/docs/r-style-guide-j.html">GoogleのRの書き方案内</a></p>
+<pre><code class="r">1 + 3
+</code></pre>
+
+<pre><code>[1] 4
+</code></pre>
+
+<pre><code class="r">a &lt;- c(1, 2, 3)
+a
+</code></pre>
+
+<pre><code>[1] 1 2 3
+</code></pre>
+
+<pre><code class="r">b &lt;- c(4, 5, 6)
+a + b
+</code></pre>
+
+<pre><code>[1] 5 7 9
+</code></pre>
+
+<pre><code class="r">a * b
+</code></pre>
+
+<pre><code>[1]  4 10 18
+</code></pre>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>その他のtips</h3>
+<h3>Rスクリプトの書き方</h3>
 <div class="slideContent" >
-<ul>
-<li>エラーメッセージは英語にする -&gt; ぐぐりやすい</li>
-<li>Rにきけ！</li>
-<li>とにかくなんでも「ぐぐる」</li>
-</ul>
+<pre><code class="r">mean(b)
+</code></pre>
+
+<pre><code>[1] 5
+</code></pre>
+
+<pre><code class="r">10 * pi
+</code></pre>
+
+<pre><code>[1] 31.42
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Andersonのアヤメのデータを使った例</h3>
+<div class="slideContent" >
+<blockquote>
+<p>三種類のあやめの品種のそれぞれからの50の花の蕚(がく)片の長さと幅、花弁の長さと幅</p>
+</blockquote>
+
+<pre><code class="r">data(iris)
+head(iris)
+</code></pre>
+
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Fisherのアヤメのデータを使った例</h3>
+<div class="mediaInline slideContent" >
+<h4>図を描く</h4>
+
+<pre><code class="r">plot(
+  iris$Sepal.Length, iris$Petal.Length, 
+  col=c(&quot;royal blue&quot;, &quot;green&quot;, &quot;orange&quot;)[iris$Species], 
+  pch=16, cex=2)
+</code></pre>
+
+<p><img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/ex_iris_plot.png" alt=""/></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>関数とパッケージ</h3>
+<div class="slideContent" >
+<p>一元配置分散分析&hellip; <code>oneway.test()</code></p>
+
+<blockquote>
+<p>３種の萼片の長さの平均値に差があるか</p>
+</blockquote>
+
+<pre><code class="r">oneway.test(iris$Sepal.Length ~ iris$Specie)
+</code></pre>
+
+<pre><code>
+    One-way analysis of means (not assuming equal variances)
+
+data:  iris$Sepal.Length and iris$Specie
+F = 138.9, num df = 2.00, denom df = 92.21, p-value &lt; 2.2e-16
+</code></pre>
+
+<blockquote>
+<p>P &lt; 0.001で萼片の長さの平均値には３種間で差がある</p>
+</blockquote>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>関数とパッケージ</h3>
+<div class="mediaInline slideContent" >
+<pre><code class="r">install.package(&quot;lattice&quot;, dependencies=TRUE)
+</code></pre>
+
+<pre><code class="r">library(lattice)
+xyplot(
+  Petal.Length ~ Sepal.Length | Species,
+  data=iris)
+</code></pre>
+
+<p><img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/ex_iris_xyplot.png" alt=""/></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>RStudioのインストール</h3>
+<div class="mediaInline slideContent" >
+<p><a href="http://www.rstudio.com">http://www.rstudio.com</a></p>
+
+<p><img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/installation-rstudio.gif" alt=""/></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>RStudioのインストール</h3>
+<div class="mediaOnly slideContent" >
+<p><img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/startup-rstudio.png" alt=""/></p>
 
 </div>
 
