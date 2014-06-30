@@ -30,7 +30,7 @@ RStudioのインストール
     * Tools -> Global Options -> PackagesでCRAN mirorをJapan(Tokoy)に設定    
     * 作業ディレクトリの設定
         * `setwd("C:Users/****/Desktop/first-practice-r/")`
-    * 新規ファイルの作成 File -> New File -> R Markdownを選択
+    * 新規ファイルの作成 File -> New File -> R Scriptを選択
         * **`practice-名前（イニシャルなど）.R`**として一旦保存
 
 操作方法のおさらい
@@ -91,9 +91,8 @@ mean(b)
 CRANからダウンロード
 
 * `install.packages("パッケージ名", dependencies=T)`
-* メニューバー Tools -> Install Packages ... 不安定？
 
-これから使用するパッケージをインストール
+いくつかのパッケージをインストール
 
 * `knitr`: RMarkdownで作成したファイルをHTMLファイルに変換したり...
 * `lattice`: 強力な作図のためのパッケージ
@@ -116,7 +115,7 @@ head(iris)
 
 
 ```r
-png("ex_iris_plot") # ファイル名
+png("ex_iris_plot.png") # ファイル名
 plot(
   iris$Sepal.Length, iris$Petal.Length, 
   col=c("royal blue", "green", "orange")[iris$Species], 
@@ -125,6 +124,19 @@ dev.off() #必ずつけること
 ```
 
 <img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/ex_iris_plot.png" width=300 align=right>
+
+latticeパッケージを使った作図
+====
+
+
+```r
+library(lattice)
+xyplot(
+  Petal.Length ~ Sepal.Length | Species,
+  data=iris)
+```
+
+![](https://github.com/YokohamaR/yokohama.r/wiki/src/images/ex_iris_xyplot.png)
 
 ファイルの読み込み
 ====

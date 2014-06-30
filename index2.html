@@ -963,7 +963,7 @@ hljs.initHighlightingOnLoad();
 <ul>
 <li><code>setwd(&quot;C:Users/****/Desktop/first-practice-r/&quot;)</code></li>
 </ul></li>
-<li>新規ファイルの作成 File -&gt; New File -&gt; R Markdownを選択
+<li>新規ファイルの作成 File -&gt; New File -&gt; R Scriptを選択
 
 <ul>
 <li><strong><code>practice-名前（イニシャルなど）.R</code></strong>として一旦保存</li>
@@ -1027,10 +1027,9 @@ a + b
 
 <ul>
 <li><code>install.packages(&quot;パッケージ名&quot;, dependencies=T)</code></li>
-<li>メニューバー Tools -&gt; Install Packages &hellip; 不安定？</li>
 </ul>
 
-<p>これから使用するパッケージをインストール</p>
+<p>いくつかのパッケージをインストール</p>
 
 <ul>
 <li><code>knitr</code>: RMarkdownで作成したファイルをHTMLファイルに変換したり&hellip;</li>
@@ -1050,7 +1049,7 @@ a + b
 <pre><code class="r">head(iris)
 </code></pre>
 
-<pre><code class="r">png(&quot;ex_iris_plot&quot;) # ファイル名
+<pre><code class="r">png(&quot;ex_iris_plot.png&quot;) # ファイル名
 plot(
   iris$Sepal.Length, iris$Petal.Length, 
   col=c(&quot;royal blue&quot;, &quot;green&quot;, &quot;orange&quot;)[iris$Species], 
@@ -1059,6 +1058,20 @@ dev.off() #必ずつけること
 </code></pre>
 
 <p><img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/ex_iris_plot.png" width=300 align=right></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>latticeパッケージを使った作図</h3>
+<div class="mediaInline slideContent" >
+<pre><code class="r">library(lattice)
+xyplot(
+  Petal.Length ~ Sepal.Length | Species,
+  data=iris)
+</code></pre>
+
+<p><img src="https://github.com/YokohamaR/yokohama.r/wiki/src/images/ex_iris_xyplot.png" alt=""/></p>
 
 </div>
 
