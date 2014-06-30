@@ -1,20 +1,12 @@
 R入門いろはにほへと: インストールから簡単な操作まで
 ========================================================
 author: 瓜生真也（横浜国立大学大学院環境情報学府）
-date: June 30, 2014
+date: June 30, 2014 @ Yokohama.R#1
 font-family: 'Helvetica'
 autosize: true
 css: custom.css
 
 
-
-CONTENTS
-=====
-
-1. Rの概要
-2. Rのインストール
-3. 簡単な操作
-4. RStudioのインストール
 
 Rの概要
 ========================================================
@@ -120,7 +112,7 @@ head(iris)
 6          5.4         3.9          1.7         0.4  setosa
 ```
 
-Fisherのアヤメのデータを使った例
+Andersonのアヤメのデータを使った例
 ======
 
 #### 図を描く
@@ -178,6 +170,8 @@ xyplot(
 RStudioのインストール
 =====
 
+Rの統合開発環境... もっと便利にRを使える
+
 http://www.rstudio.com
 
 ![](https://github.com/YokohamaR/yokohama.r/wiki/src/images/installation-rstudio.gif)
@@ -185,4 +179,6 @@ http://www.rstudio.com
 RStudioのインストール
 =====
 
-![](https://github.com/YokohamaR/yokohama.r/wiki/src/images/startup-rstudio.png)
+RStudioをインストールしたら...
+
+-> http://yokohamar.github.io/introduction-to-r/index2.html
